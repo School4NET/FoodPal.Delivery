@@ -44,12 +44,12 @@ namespace FoodPal.Delivery.Processor
                 services.AddMediatR(typeof(AddUserCommandHandler).Assembly);
 
                 // mass transit consumer registration
-                services.AddTransient<UserAddedConsumer>();
-                services.AddTransient<UserUpdatedConsumer>();
+                services.AddScoped<UserAddedConsumer>();
+                services.AddScoped<UserUpdatedConsumer>();
 
-                services.AddTransient<NewDeliveryRequestedConsumer>();
-                services.AddTransient<DeliveryCompletedConsumer>();
-                services.AddTransient<DeliveriesRequestedConsumer>(); 
+                services.AddScoped<NewDeliveryRequestedConsumer>();
+                services.AddScoped<DeliveryCompletedConsumer>();
+                services.AddScoped<DeliveriesRequestedConsumer>(); 
 
                 services.AddMassTransit(x => { x.SetKebabCaseEndpointNameFormatter(); x.UsingAzureServiceBus((context, configurator) =>
                 {
